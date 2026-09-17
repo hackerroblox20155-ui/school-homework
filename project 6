@@ -1,0 +1,48 @@
+using System;
+
+class Program
+{
+    static int CountLastNumber()
+    {
+        int[] numbers = new int[100];
+        int count = 0;
+
+        int num;
+
+        Console.WriteLine("أput number and to finish put 0");
+
+        do
+        {
+            num = int.Parse(Console.ReadLine());
+
+            if (num != 0)
+            {
+                numbers[count] = num;
+                count++;
+            }
+
+        } while (num != 0);
+
+        // العدد الأخير الذي تم إدخاله
+        int last = numbers[count - 1];
+
+        int occurrences = 0;
+
+        for (int i = 0; i < count - 1; i++)
+        {
+            if (numbers[i] == last)
+            {
+                occurrences++;
+            }
+        }
+
+        return occurrences;
+    }
+
+    static void Main()
+    {
+        int result = CountLastNumber();
+
+        Console.WriteLine("the number of times the number appeared = " + result);
+    }
+}
