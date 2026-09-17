@@ -1,0 +1,50 @@
+using System;
+
+class Program
+{
+    static void SortArray(int[] a)
+    {
+        for (int i = 0; i < a.Length - 1; i++)
+        {
+            for (int j = 0; j < a.Length - 1 - i; j++)
+            {
+                if (a[j] > a[j + 1])
+                {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    static void PrintArray(int[] a)
+    {
+        for (int i = 0; i < a.Length; i++)
+        {
+            Console.Write(a[i] + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        Random rnd = new Random();
+
+        int[] a = new int[10];
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            a[i] = rnd.Next(1, 21);
+        }
+
+        Console.WriteLine("array before arrangment:");
+        PrintArray(a);
+
+        SortArray(a);
+
+        Console.WriteLine("array after arrangment:");
+        PrintArray(a);
+    }
+}
