@@ -1,0 +1,51 @@
+using System;
+
+class Program
+{
+    static void SortPart(int[] a, int start, int last)
+    {
+        for (int i = start; i < last; i++)
+        {
+            for (int j = start; j < last - (i - start); j++)
+            {
+                if (a[j] < a[j + 1])
+                {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    static void SortHalves(int[] a)
+    {
+        int middle = a.Length / 2;
+
+        SortPart(a, 0, middle - 1);
+        SortPart(a, middle, a.Length - 1);
+    }
+
+    static void PrintArray(int[] a)
+    {
+        for (int i = 0; i < a.Length; i++)
+        {
+            Console.Write(a[i] + " ");
+        }
+
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        int[] a = { 9, 3, 6, 7, 10, 8, 1, 6, 3, 5 };
+
+        Console.WriteLine("before arrangment:");
+        PrintArray(a);
+
+        SortHalves(a);
+
+        Console.WriteLine("after arrangment:");
+        PrintArray(a);
+    }
+}
